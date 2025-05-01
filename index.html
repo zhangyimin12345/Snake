@@ -747,6 +747,126 @@
         .lb-data .lb-close {
             opacity: 1 !important;
         }
+
+        /* 添加在<style>标签内 */
+        .bookQuote-color-picker {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .bookQuote-color-picker label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+
+        .bookQuote-color-picker input[type="color"] {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .bookQuote-color-picker button {
+            padding: 6px 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .bookQuote-color-picker button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* 主题配置面板样式 */
+        .theme-config-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--sidebar-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            z-index: 2000;
+            width: 90%;
+            max-width: 500px;
+            display: none;
+        }
+
+        .theme-config-panel.active {
+            display: block;
+        }
+
+        .theme-config-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            display: none;
+        }
+
+        .theme-config-overlay.active {
+            display: block;
+        }
+
+        .theme-config-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .theme-config-row label {
+            width: 120px;
+            font-weight: 500;
+        }
+
+        .theme-config-row input[type="color"] {
+            width: 60px;
+            height: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .theme-config-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .theme-config-actions button {
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .theme-config-save {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .theme-config-cancel {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
     </style>
 
     <style>
@@ -996,6 +1116,7 @@
             <button class="theme-btn" data-theme="dusk" title="黄昏模式"><i class="fas fa-cloud-sun"></i></button>
             <button class="theme-btn" data-theme="night" title="夜晚模式"><i class="fas fa-moon"></i></button>
             <button class="theme-btn" id="auto-theme" title="自动模式"><i class="fas fa-robot"></i></button>
+            <button class="theme-btn" data-theme="custom" title="自定义主题"><i class="fas fa-palette"></i></button>
         </div>
     </header>
 
@@ -1146,9 +1267,36 @@ function hello() {
             <div class="modal-content">
                 <div class="horoscope-input-container">
                     <input type="text" id="horoscopeInput" placeholder="输入星座(如: virgo、taurus等)" autocomplete="off">
-                    <button id="horoscopeSubmit"><p style="color: #ffffff;">查询</p></button>
+                    <button id="horoscopeSubmit">
+                        <p style="color: #ffffff;">查询</p>
+                    </button>
                 </div>
                 <div id="horoscopeResult" class="horoscope-result"></div>
+            </div>
+        </div>
+
+        <div class="theme-config-overlay"></div>
+        <div class="theme-config-panel">
+            <h3>自定义主题配置</h3>
+            <div class="theme-config-row">
+                <label for="theme-primary">主色:</label>
+                <input type="color" id="theme-primary" value="#9c27b0">
+            </div>
+            <div class="theme-config-row">
+                <label for="theme-secondary">辅色:</label>
+                <input type="color" id="theme-secondary" value="#7b1fa2">
+            </div>
+            <div class="theme-config-row">
+                <label for="theme-text">文字颜色:</label>
+                <input type="color" id="theme-text" value="#4a148c">
+            </div>
+            <div class="theme-config-row">
+                <label for="theme-bg">背景色:</label>
+                <input type="color" id="theme-bg" value="#f3e5f5">
+            </div>
+            <div class="theme-config-actions">
+                <button class="theme-config-cancel">取消</button>
+                <button class="theme-config-save">保存</button>
             </div>
         </div>
     </main>
@@ -1172,7 +1320,7 @@ function hello() {
     </div>
 
     <footer>
-        <p>&copy; 2025 <strong>zhangyimin12345</strong> 的主页 <strong>v.1.0.1</strong> 保留所有权利.</p>
+        <p>&copy; 2025 <strong>zhangyimin12345</strong> 的主页 <strong>v.1.0.2</strong> 保留所有权利.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/marked@4.0.0/marked.min.js"></script>
@@ -1181,6 +1329,16 @@ function hello() {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script> -->
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('themePreference');
+            if (savedTheme) {
+                setTheme(savedTheme);
+                autoThemeEnabled = false;
+                autoThemeBtn.classList.remove('active');
+            } else {
+                updateTimeAndTheme();
+            }
+        })
         // 初始化代码高亮
         hljs.highlightAll();
 
@@ -1194,6 +1352,61 @@ function hello() {
                 link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css';
             }
         }
+
+        // 主题配置功能
+        const themeConfigBtn = document.querySelector('[data-theme="custom"]');
+        const themeConfigPanel = document.querySelector('.theme-config-panel');
+        const themeConfigOverlay = document.querySelector('.theme-config-overlay');
+        const themeConfigCancel = document.querySelector('.theme-config-cancel');
+        const themeConfigSave = document.querySelector('.theme-config-save');
+
+        // 打开主题配置面板
+        themeConfigBtn.addEventListener('click', () => {
+            themeConfigPanel.classList.add('active');
+            themeConfigOverlay.classList.add('active');
+        });
+
+        // 关闭主题配置面板
+        themeConfigCancel.addEventListener('click', () => {
+            themeConfigPanel.classList.remove('active');
+            themeConfigOverlay.classList.remove('active');
+        });
+
+        themeConfigOverlay.addEventListener('click', () => {
+            themeConfigPanel.classList.remove('active');
+            themeConfigOverlay.classList.remove('active');
+        });
+
+        // 保存自定义主题
+        themeConfigSave.addEventListener('click', () => {
+            const primaryColor = document.getElementById('theme-primary').value;
+            const secondaryColor = document.getElementById('theme-secondary').value;
+            const textColor = document.getElementById('theme-text').value;
+            const bgColor = document.getElementById('theme-bg').value;
+
+            // 应用自定义主题
+            document.documentElement.style.setProperty('--primary-color', primaryColor);
+            document.documentElement.style.setProperty('--secondary-color', secondaryColor);
+            document.documentElement.style.setProperty('--text-color', textColor);
+            document.documentElement.style.setProperty('--bg-color', bgColor);
+
+            // 保存到本地存储
+            const customTheme = {
+                primary: primaryColor,
+                secondary: secondaryColor,
+                text: textColor,
+                bg: bgColor
+            };
+            localStorage.setItem('customTheme', JSON.stringify(customTheme));
+
+            // 关闭面板
+            themeConfigPanel.classList.remove('active');
+            themeConfigOverlay.classList.remove('active');
+
+            // 激活自定义主题按钮
+            document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
+            themeConfigBtn.classList.add('active');
+        });
 
         // 主题切换功能
         const themeBtns = document.querySelectorAll('.theme-btn');
@@ -1225,6 +1438,11 @@ function hello() {
                 }
             });
             updateCodeHighlightTheme();
+
+            // Store theme preference if not auto
+            if (!autoThemeEnabled) {
+                localStorage.setItem('themePreference', theme);
+            }
         }
 
         themeBtns.forEach(btn => {
@@ -1284,36 +1502,31 @@ function hello() {
         // Markdown预览功能
         const renderer = new marked.Renderer();
         renderer.paragraph = function (text) {
-            // 处理行内公式
-            text = text.replace(/\$(.*?)\$/g, (_, math) => {
-                try {
-                    return katex.renderToString(math, { throwOnError: false });
-                } catch (e) {
-                    return `<span style="color:red">${e.message}</span>`;
-                }
-            });
-
-            // 处理块公式
-            const escapeHtml = (str) => str.replace(/[&<>"']/g, tag =>
-                ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[tag])
-            );
-
-            // 更可靠的正则表达式
-            const BLOCK_FORMULA_REGEX = /(?<!\\)\$\$([^$]+)\$\$(?!\\)/g;
-
-            text = text.replace(BLOCK_FORMULA_REGEX, (_, math) => {
+            // Handle block formulas first
+            const blockFormulaRegex = /\$\$([^$]+)\$\$/g;
+            text = text.replace(blockFormulaRegex, (_, math) => {
                 try {
                     return katex.renderToString(math.trim(), {
                         displayMode: true,
-                        throwOnError: process.env.NODE_ENV === 'development',
-                        macros: { "\\ce": "\\text{#1}" }, // 支持化学方程式
-                        strict: "ignore" // 忽略一些严格模式错误
+                        throwOnError: false
                     });
                 } catch (e) {
-                    return `<div class="katex-error" title="${escapeHtml(e.message)}">${escapeHtml(math)}</div>`;
+                    return `<div class="katex-error">$$${math}$$</div>`;
                 }
             });
 
+            // Then handle inline formulas
+            const inlineFormulaRegex = /(?<!\\)\$([^$]+)\$(?!\\)/g;
+            text = text.replace(inlineFormulaRegex, (_, math) => {
+                try {
+                    return katex.renderToString(math, {
+                        displayMode: false,
+                        throwOnError: false
+                    });
+                } catch (e) {
+                    return `<span class="katex-error">$${math}$</span>`;
+                }
+            });
 
             return `<p>${text}</p>`;
         };
@@ -1498,18 +1711,37 @@ function hello() {
             );
 
             document.getElementById('algorithm-list').innerHTML = filtered.map(algo => `
-                <div class="algorithm-card">
-                    <h3>${algo.title}</h3>
-                    <small>${algo.category}</small>
-                    <p style="margin: 0.5rem 0; color: var(--text-color); opacity: 0.8;">${algo.description}</p>
-                    <pre><code class="language-javascript">${algo.code}</code></pre>
-                </div>
-            `).join('');
+        <div class="algorithm-card">
+            <h3>${algo.title}</h3>
+            <small>${algo.category}</small>
+            <p style="margin: 0.5rem 0; color: var(--text-color); opacity: 0.8;" class="algorithm-description">${algo.description}</p>
+            <pre><code class="language-javascript">${algo.code}</code></pre>
+        </div>
+    `).join('');
 
-            // 高亮代码
+            // Render math in descriptions
+            document.querySelectorAll('.algorithm-description').forEach(el => {
+                renderMathInElement(el, {
+                    delimiters: [
+                        { left: '$', right: '$', display: false },
+                        { left: '$$', right: '$$', display: true }
+                    ],
+                    throwOnError: false
+                });
+            });
+
+            // Highlight code
             document.querySelectorAll('pre code').forEach((block) => {
                 hljs.highlightElement(block);
             });
+        }
+
+        function deleteNotification(id) {
+            const notifications = JSON.parse(localStorage.getItem('notifications') || []);
+            const updated = notifications.filter(n => n.id !== id);
+            localStorage.setItem('notifications', JSON.stringify(updated));
+            renderNotifications();
+            showNotification('消息已删除', 0);
         }
 
         document.getElementById('algorithm-search').addEventListener('input', (e) => {
@@ -1520,7 +1752,17 @@ function hello() {
         function renderChangelog() {
             const changelog = [
                 {
-                    version: '1.0.1',
+                    version: '1.0.2',
+                    date: '2025-05-01',
+                    changes: [
+                        '添加自定义主题',
+                        '添加书摘颜色选择器',
+                        '修复了块公式无法显示的问题',
+                        '添加消息删除功能'
+                    ]
+                },
+                {
+                    version: '1.0.01',
                     date: '2025-05-1',
                     changes: [
                         '新增灯箱效果，支持算法模板全屏查看',
@@ -1591,13 +1833,18 @@ function hello() {
         }
 
         function renderNotifications() {
-            const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
+            const notifications = JSON.parse(localStorage.getItem('notifications') || []);
             document.getElementById('notification-history').innerHTML = notifications.map(n => `
-                <div class="notification-history-item">
-                    <small>${n.time}</small>
-                    <div>${n.message}</div>
-                </div>
-            `).join('');
+        <div class="notification-history-item">
+            <div style="display: flex; justify-content: space-between;">
+                <small>${n.time}</small>
+                <button onclick="deleteNotification(${n.id})" style="background: none; border: none; color: var(--text-color); cursor: pointer;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div>${n.message}</div>
+        </div>
+    `).join('');
         }
 
         // 初始化
@@ -1912,34 +2159,44 @@ function hello() {
         });
 
         document.getElementById('bookQuote').addEventListener('click', function () {
-            // 获取文学句子并处理
+            // 获取用户偏好或使用默认值
+            const textColor = localStorage.getItem('bookQuoteTextColor') || '000000';
+            const bgColor = localStorage.getItem('bookQuoteBgColor') || 'ffffff';
+
             fetch('https://api.vvhan.com/api/ian/wenxue?type=json')
                 .then(response => response.json())
                 .then(data => {
-                    // // 每9个字符加一个换行符
                     let processedText = '';
                     const content = data.data.content || '';
                     for (let i = 0; i < content.length; i++) {
                         processedText += content[i];
-                        if ((i + 1) % 9 === 0) {
-                            processedText += '\n';
-                        }
+                        if ((i + 1) % 9 === 0) processedText += '\n';
                     }
 
-                    // 编码处理后的文本和作者用于URL
                     const encodedText = encodeURIComponent(processedText);
-                    const encodedAuthor = encodeURIComponent('——' + data.data.form || '——未知');
+                    const encodedAuthor = encodeURIComponent('——' + (data.data.form || '未知'));
 
-                    // 创建图片元素
                     const img = document.createElement('img');
-                    img.src = `https://api.vvhan.com/api/artText?text=${encodedText} &auther=${encodedAuthor}&color=000000&bgcolor=ffffff`;
+                    img.src = `https://api.vvhan.com/api/artText?text=${encodedText}&auther=${encodedAuthor}&color=${textColor}&bgcolor=${bgColor}`;
                     img.style.maxWidth = '100%';
                     img.style.display = 'block';
                     img.style.margin = '0 auto';
 
                     // 清空并添加图片到书摘框
                     const bookQuoteContent = document.getElementById('bookQuoteContent');
-                    bookQuoteContent.innerHTML = '';
+                    bookQuoteContent.innerHTML = `
+                <div class="bookQuote-color-picker">
+                    <label>
+                        文字颜色:
+                        <input type="color" id="bookQuoteTextColor" value="#${textColor}">
+                    </label>
+                    <label>
+                        背景颜色:
+                        <input type="color" id="bookQuoteBgColor" value="#${bgColor}">
+                    </label>
+                    <button onclick="updateBookQuoteColors()">应用</button>
+                </div>
+            `;
                     bookQuoteContent.appendChild(img);
                 })
                 .catch(error => {
@@ -1948,6 +2205,14 @@ function hello() {
                         '<p>获取书摘失败，请稍后再试。</p>';
                 });
         });
+
+        function updateBookQuoteColors() {
+            const textColor = document.getElementById('bookQuoteTextColor').value.replace('#', '');
+            const bgColor = document.getElementById('bookQuoteBgColor').value.replace('#', '');
+            localStorage.setItem('bookQuoteTextColor', textColor);
+            localStorage.setItem('bookQuoteBgColor', bgColor);
+            document.getElementById('bookQuote').click(); // Refresh
+        }
     </script>
 </body>
 

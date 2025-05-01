@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zhangyimin12345 的主页</title>
+    <link rel="shortcut icon" href="https://cdn.luogu.com.cn/upload/image_hosting/1131y5x7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"> -->
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --sidebar-bg: #ffffff;
+            --header-bg: #ffffff;
+            --footer-bg: #f1f1f1;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+            --top-text-color: #4285f4;
+            --code-bg: #f8f8f8;
+        }
+
+        .theme-day {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --sidebar-bg: #ffffff;
+            --header-bg: #ffffff;
+            --footer-bg: #f1f1f1;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+            --top-text-color: #4285f4;
+            --code-bg: #f8f8f8;
+        }
+
+        .theme-dusk {
+            --primary-color: #FFC107;
+            --secondary-color: #FFA000;
+            --text-color: #5D4037;
+            --bg-color: #FFF8E1;
+            --sidebar-bg: #FFECB3;
+            --header-bg: #FFD54F;
+            --footer-bg: #FFE082;
+            --shadow-color: rgba(0, 0, 0, 0.15);
+            --border-color: #FFB300;
+            --top-text-color: #5D4037;
+            --code-bg: #FFF3E0;
+        }
+
+        .theme-night {
+            --primary-color: #bb86fc;
+            --secondary-color: #03dac6;
+            --text-color: #e1e1e1;
+            --bg-color: #121212;
+            --sidebar-bg: #1e1e1e;
+            --header-bg: #1f1f1f;
+            --footer-bg: #1a1a1a;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --border-color: #333;
+            --top-text-color: #bb86fc;
+            --code-bg: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            grid-template-columns: auto 1fr auto;
+            min-height: 100vh;
+        }
+
+        header {
+            grid-column: 1 / 4;
+            background-color: var(--header-bg);
+            padding: 1rem;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--top-text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 24px;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+        .theme-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            opacity: 1;
+            background-color: var(--shadow-color);
+            transform: scale(1.1);
+        }
+
+        .theme-btn.active {
+            opacity: 1;
+            color: var(--primary-color);
+        }
+
+        aside {
+            background-color: var(--sidebar-bg);
+            padding: 1rem;
+            box-shadow: 2px 0 5px var(--shadow-color);
+            overflow-y: auto;
+            transition: width 0.3s ease;
+            width: 50px;
+            border-right: 1px solid var(--border-color);
+            z-index: 90;
+        }
+
+        aside .sidebar-content {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        aside.active {
+            width: 250px;
+        }
+
+        aside.active .sidebar-content {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .toggle-sidebar {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .toggle-sidebar:hover {
+            background-color: var(--shadow-color);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .sidebar-menu .menu-text {
+            transition: opacity 0.2s;
+        }
+
+        aside:not(.active) .sidebar-menu .menu-text {
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        aside:not(.active) .sidebar-menu a {
+            justify-content: center;
+            padding: 0.8rem 0;
+        }
+
+        aside:not(.active) .sidebar-menu a:hover {
+            background-color: var(--shadow-color);
+            transform: scale(1.1);
+        }
+
+        .action-buttons {
+            display: none;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: var(--shadow-color);
+            transform: translateX(3px);
+        }
+
+        .sidebar-menu a.active {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            padding: 1.5rem;
+            overflow-y: auto;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .right-sidebar {
+            background-color: var(--sidebar-bg);
+            padding: 1rem;
+            box-shadow: -2px 0 5px var(--shadow-color);
+            overflow-y: auto;
+            transition: width 0.3s ease;
+            width: 50px;
+            border-left: 1px solid var(--border-color);
+            z-index: 90;
+        }
+
+        .right-sidebar.active {
+            width: 250px;
+        }
+
+        .right-sidebar-content {
+            display: none;
+            height: calc(100% - 50px);
+            overflow-y: auto;
+        }
+
+        .right-sidebar.active .right-sidebar-content {
+            display: block;
+        }
+
+        footer {
+            grid-column: 1 / 4;
+            background-color: var(--footer-bg);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 -2px 5px var(--shadow-color);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        /* Markdown编辑器样式 */
+        #markdown-editor {
+            width: 100%;
+            min-height: 300px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--sidebar-bg);
+            color: var(--text-color);
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.5;
+            resize: vertical;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        #markdown-editor:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+        }
+
+        #markdown-preview {
+            min-height: 300px;
+            padding: 1.5rem;
+            background-color: var(--sidebar-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+
+        #markdown-preview pre {
+            background-color: var(--code-bg);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        #markdown-preview code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        #markdown-preview blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        /* 剪贴板样式 */
+        #clipboard-form {
+            background-color: var(--sidebar-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        #clipboard-form input,
+        #clipboard-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--sidebar-bg);
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        #clipboard-form input:focus,
+        #clipboard-form textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+            outline: none;
+        }
+
+        #clipboard-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        #clipboard-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            width: auto;
+            display: inline-block;
+        }
+
+        #clipboard-form button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow-color);
+        }
+
+        .clipboard-items {
+            margin-top: 1rem;
+        }
+
+        .clipboard-item {
+            background-color: var(--sidebar-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .clipboard-item:hover {
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transform: translateY(-3px);
+        }
+
+        .clipboard-item h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .clipboard-item .clipboard-content {
+            margin: 1rem 0;
+            line-height: 1.6;
+        }
+
+        .clipboard-item small {
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        .clipboard-item .clipboard-actions {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .clipboard-item .clipboard-actions button {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.2s;
+        }
+
+        .clipboard-item .clipboard-actions button:hover {
+            opacity: 1;
+            color: var(--primary-color);
+        }
+
+        /* 算法模板库样式 */
+        .algorithm-search-container {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        #algorithm-search {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--sidebar-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23999' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 1rem center;
+            background-size: 1rem;
+        }
+
+        #algorithm-search:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+            outline: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234285f4' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
+        }
+
+        .algorithm-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .algorithm-card {
+            background-color: var(--sidebar-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .algorithm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-color);
+        }
+
+        .algorithm-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+
+        .algorithm-card small {
+            display: block;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .algorithm-card pre {
+            background-color: var(--code-bg);
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .algorithm-card code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* 更新日志样式 */
+        .changelog-container {
+            background-color: var(--sidebar-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        .changelog-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed var(--border-color);
+            position: relative;
+        }
+
+        .changelog-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .changelog-version {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .changelog-date {
+            display: inline-block;
+            margin-left: 0.5rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .changelog-changes {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .changelog-changes li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .changelog-changes li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+        }
+
+        /* 通知系统样式 */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+            max-width: 300px;
+            display: flex;
+            align-items: center;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification-icon {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .notification-history-item {
+            background-color: var(--sidebar-bg);
+            border-radius: 6px;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            transition: all 0.3s;
+        }
+
+        .notification-history-item:hover {
+            transform: translateX(3px);
+        }
+
+        .notification-history-item small {
+            display: block;
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            body {
+                grid-template-columns: 1fr;
+            }
+
+            aside,
+            .right-sidebar {
+                position: fixed;
+                top: 0;
+                height: 100vh;
+                z-index: 90;
+            }
+
+            aside {
+                left: 0;
+                transform: translateX(-100%);
+            }
+
+            aside.active {
+                transform: translateX(0);
+                width: 80%;
+            }
+
+            .right-sidebar {
+                right: 0;
+                transform: translateX(100%);
+            }
+
+            .right-sidebar.active {
+                transform: translateX(0);
+                width: 80%;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .algorithm-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Katex公式样式 */
+        .katex {
+            font-size: 1.1em !important;
+        }
+
+        .katex-display {
+            margin: 1em 0;
+            overflow: auto hidden;
+            padding: 1em;
+            background-color: var(--code-bg);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* 灯箱样式覆盖 */
+        .lb-container {
+            background-color: rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .lb-nav a.lb-prev,
+        .lb-nav a.lb-next {
+            opacity: 1 !important;
+        }
+
+        .lb-data .lb-close {
+            opacity: 1 !important;
+        }
+    </style>
+
+    <style>
+        .weather-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            z-index: 2000;
+            width: 80%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .weather-modal h3 {
+            margin-top: 0;
+            color: var(--theme-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .weather-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .weather-current {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .weather-temp {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .weather-desc {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .weather-details {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .weather-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .weather-forecast {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .weather-day {
+            background: var(--code-bg);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .weather-day-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .weather-day-temp {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 5px;
+        }
+
+        .weather-high {
+            color: #e74c3c;
+        }
+
+        .weather-low {
+            color: #3498db;
+        }
+
+        .weather-air {
+            margin-top: 20px;
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .weather-air-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .weather-air-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .weather-air-item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .weather-air-value {
+            font-weight: bold;
+        }
+
+        .aqi-good {
+            color: #2ecc71;
+        }
+
+        .aqi-moderate {
+            color: #f39c12;
+        }
+
+        .aqi-unhealthy {
+            color: #e74c3c;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border-color);
+            padding: 0.6em 1em;
+        }
+
+        th {
+            background-color: var(--bg-color);
+        }
+
+        /* 星座运势样式 */
+        .horoscope-input-container {
+            display: flex;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        #horoscopeInput {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        #horoscopeSubmit {
+            padding: 8px 16px;
+            background-color: var(--theme-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #horoscopeSubmit:hover {
+            background: var(--primary-color);
+        }
+
+        .horoscope-result {
+            padding: 15px;
+            background-color: var(--code-bg);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .horoscope-item {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .horoscope-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .horoscope-item strong {
+            color: var(--theme-color);
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body class="theme-day">
+    <header>
+        <div class="logo">
+            <img src="https://cdn.luogu.com.cn/upload/image_hosting/1131y5x7.png" alt="Logo">
+            <p><strong>zhangyimin12345</strong> 的主页</p>
+        </div>
+        <div class="theme-controls">
+            <button class="theme-btn" data-theme="day" title="白天模式"><i class="fas fa-sun"></i></button>
+            <button class="theme-btn" data-theme="dusk" title="黄昏模式"><i class="fas fa-cloud-sun"></i></button>
+            <button class="theme-btn" data-theme="night" title="夜晚模式"><i class="fas fa-moon"></i></button>
+            <button class="theme-btn" id="auto-theme" title="自动模式"><i class="fas fa-robot"></i></button>
+        </div>
+    </header>
+
+    <aside id="left-sidebar">
+        <button class="toggle-sidebar" id="toggle-left">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="sidebar-content">
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" data-tab="home" id="home"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="#" data-tab="markdown" id="markdown"><i class="fas fa-edit"></i> Markdown编辑器</a></li>
+                <li><a href="#" data-tab="clipboard" id="clipboard"><i class="fas fa-clipboard"></i> 剪贴板</a></li>
+                <li><a href="#" data-tab="algorithm" id="algorithm"><i class="fas fa-code"></i> 算法模板库</a></li>
+                <li><a href="#" data-tab="bookQuote" id="bookQuote"><i class="fas fa-book"></i> 今日书摘</a></li>
+                <li><a href="#" data-tab="weather" id="weather"><i class="fas fa-cloud-sun"></i> 天气查询</a></li>
+                <li><a href="#" data-tab="horoscope" id="horoscope"><i class="fas fa-star"></i> 星座运势</a></li>
+                <li><a href="#" data-tab="changelog" id="changelog"><i class="fas fa-history"></i> 更新日志</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main>
+        <div class="tab-content active" id="home-tab">
+            <h1>Welcome to zhangyimin12345's HomePage!🎉🎉🎉</h1>
+            <h4>欢迎来到 <strong>zhangyimin12345</strong> 的主页！🎉🎉🎉</h4>
+            <p>这是可使用版本，可能不是最新版本，但保证了没有明显的漏洞。</p>
+            <p>打开左侧边栏，使用功能吧！</p>
+        </div>
+        <div class="tab-content" id="markdown-tab">
+            <h1>Markdown编辑器</h1>
+            <textarea id="markdown-editor"># 在这里编写Markdown内容
+
+支持LaTeX公式：
+行内公式 $E=mc^2$
+
+块公式：
+$$\int_a^b f(x)dx = F(b) - F(a)$$
+
+代码示例：
+```javascript
+function hello() {
+    console.log("Hello, world!");
+}
+```</textarea>
+            <div id="markdown-preview"></div>
+        </div>
+
+        <div class="tab-content" id="clipboard-tab">
+            <h1>剪贴板</h1>
+            <form id="clipboard-form">
+                <input type="text" name="title" placeholder="标题" required>
+                <textarea name="content" placeholder="内容（支持Markdown和LaTeX）" rows="6" required></textarea>
+                <button type="submit"><i class="fas fa-save"></i> 保存剪贴板</button>
+            </form>
+            <div id="clipboard-items" class="clipboard-items"></div>
+        </div>
+
+        <!-- <div class="modal-overlay" id="modalOverlay"></div> -->
+
+        <div class="tab-content" id="algorithm-tab">
+            <h1>算法模板库</h1>
+            <div class="algorithm-search-container">
+                <input type="text" id="algorithm-search" placeholder="搜索算法...">
+            </div>
+            <div class="algorithm-list" id="algorithm-list"></div>
+        </div>
+
+        <div class="tab-content" id="changelog-tab">
+            <h1>更新日志</h1>
+            <div class="changelog-container" id="changelog-content"></div>
+        </div>
+
+        <!-- 今日书摘模态框 -->
+        <div class="tab-content" id="bookQuote-tab">
+            <h1>每日书摘</h1>
+            <div class="modal-content" id="bookQuoteContent">
+                <div class="loading-spinner"></div>
+                <p style="text-align: center;">加载书摘中...</p>
+            </div>
+        </div>
+
+        <!-- 天气模态框 -->
+        <div class="tab-content" id="weather-tab">
+            <h1>天气信息</h1>
+            <div class="weather-content" id="weatherContent">
+                <div class="loading-spinner"></div>
+                <p style="text-align: center;">正在获取天气信息...</p>
+            </div>
+        </div>
+
+        <!-- 星座运势模态框 -->
+        <div class="tab-content" id="horoscope-tab">
+            <h1>星座运势</h1>
+            <table>
+                <tr>
+                    <th><strong>星座名</strong></th>
+                    <th><strong>英文名</strong></th>
+                </tr>
+                <tr>
+                    <th>白羊座</th>
+                    <th>aries</th>
+                </tr>
+                <tr>
+                    <th>金牛座</th>
+                    <th>taurus</th>
+                </tr>
+                <tr>
+                    <th>双子座</th>
+                    <th>gemini</th>
+                </tr>
+                <tr>
+                    <th>巨蟹座</th>
+                    <th>cancer</th>
+                </tr>
+                <tr>
+                    <th>狮子座</th>
+                    <th>leo</th>
+                </tr>
+                <tr>
+                    <th>处女座</th>
+                    <th>virgo</th>
+                </tr>
+                <tr>
+                    <th>天秤座</th>
+                    <th>libra</th>
+                </tr>
+                <tr>
+                    <th>天蝎座</th>
+                    <th>scorpio</th>
+                </tr>
+                <tr>
+                    <th>射手座</th>
+                    <th>sagittarius</th>
+                </tr>
+                <tr>
+                    <th>摩羯座</th>
+                    <th>capricorn</th>
+                </tr>
+                <tr>
+                    <th>水瓶座</th>
+                    <th>aquarius</th>
+                </tr>
+                <tr>
+                    <th>双鱼座</th>
+                    <th>pisces</th>
+                </tr>
+            </table>
+            <div class="modal-content">
+                <div class="horoscope-input-container">
+                    <input type="text" id="horoscopeInput" placeholder="输入星座(如: virgo、taurus等)" autocomplete="off">
+                    <button id="horoscopeSubmit"><p style="color: #ffffff;">查询</p></button>
+                </div>
+                <div id="horoscopeResult" class="horoscope-result"></div>
+            </div>
+        </div>
+    </main>
+
+    <aside class="right-sidebar" id="right-sidebar">
+        <button class="toggle-sidebar" id="toggle-right">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="right-sidebar-content">
+            <h3><i class="fas fa-bell"></i> 消息历史</h3>
+            <div id="notification-history">
+                <div class="loading-spinner"></div>
+                <p style="text-align: center;">加载消息历史中...</p>
+            </div>
+        </div>
+    </aside>
+
+    <div id="notification" class="notification">
+        <div class="notification-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="notification-message"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 <strong>zhangyimin12345</strong> 的主页 <strong>v.1.0.1</strong> 保留所有权利.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.0.0/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script> -->
+    <script>
+        // 初始化代码高亮
+        hljs.highlightAll();
+
+        // 根据主题切换代码高亮样式
+        function updateCodeHighlightTheme() {
+            const isDark = document.body.classList.contains('theme-night');
+            const link = document.querySelector('link[href*="highlight.js"]');
+            if (isDark) {
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css';
+            } else {
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css';
+            }
+        }
+
+        // 主题切换功能
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        const autoThemeBtn = document.getElementById('auto-theme');
+        let autoThemeEnabled = true;
+
+        function updateTimeAndTheme() {
+            const now = new Date();
+            const hours = now.getHours();
+
+            if (autoThemeEnabled) {
+                if (hours >= 5 && hours < 17) {
+                    setTheme('day');
+                } else if (hours >= 17 && hours < 19) {
+                    setTheme('dusk');
+                } else {
+                    setTheme('night');
+                }
+            }
+        }
+
+        function setTheme(theme) {
+            document.body.className = `theme-${theme}`;
+            themeBtns.forEach(btn => {
+                if (btn.dataset.theme === theme) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            updateCodeHighlightTheme();
+        }
+
+        themeBtns.forEach(btn => {
+            if (btn.id !== 'auto-theme') {
+                btn.addEventListener('click', () => {
+                    setTheme(btn.dataset.theme);
+                    autoThemeEnabled = false;
+                    autoThemeBtn.classList.remove('active');
+                });
+            }
+        });
+
+        autoThemeBtn.addEventListener('click', () => {
+            autoThemeEnabled = !autoThemeEnabled;
+            if (autoThemeEnabled) {
+                autoThemeBtn.classList.add('active');
+                updateTimeAndTheme();
+            } else {
+                autoThemeBtn.classList.remove('active');
+            }
+        });
+
+        // 侧边栏功能
+        const leftSidebar = document.getElementById('left-sidebar');
+        const rightSidebar = document.getElementById('right-sidebar');
+        const toggleLeft = document.getElementById('toggle-left');
+        const toggleRight = document.getElementById('toggle-right');
+
+        toggleLeft.addEventListener('click', () => {
+            leftSidebar.classList.toggle('active');
+            toggleLeft.querySelector('i').classList.toggle('fa-chevron-right');
+            toggleLeft.querySelector('i').classList.toggle('fa-chevron-left');
+        });
+
+        toggleRight.addEventListener('click', () => {
+            rightSidebar.classList.toggle('active');
+            document.querySelector('.right-sidebar-content').style.display =
+                rightSidebar.classList.contains('active') ? 'block' : 'none';
+            toggleRight.querySelector('i').classList.toggle('fa-chevron-left');
+            toggleRight.querySelector('i').classList.toggle('fa-chevron-right');
+        });
+
+        // 标签页切换
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector('.sidebar-menu a.active').classList.remove('active');
+                link.classList.add('active');
+
+                // document.getElementById('main')='';
+                const tabId = link.getAttribute('data-tab') + '-tab';
+                document.querySelector('.tab-content.active').classList.remove('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Markdown预览功能
+        const renderer = new marked.Renderer();
+        renderer.paragraph = function (text) {
+            // 处理行内公式
+            text = text.replace(/\$(.*?)\$/g, (_, math) => {
+                try {
+                    return katex.renderToString(math, { throwOnError: false });
+                } catch (e) {
+                    return `<span style="color:red">${e.message}</span>`;
+                }
+            });
+
+            // 处理块公式
+            const escapeHtml = (str) => str.replace(/[&<>"']/g, tag =>
+                ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[tag])
+            );
+
+            // 更可靠的正则表达式
+            const BLOCK_FORMULA_REGEX = /(?<!\\)\$\$([^$]+)\$\$(?!\\)/g;
+
+            text = text.replace(BLOCK_FORMULA_REGEX, (_, math) => {
+                try {
+                    return katex.renderToString(math.trim(), {
+                        displayMode: true,
+                        throwOnError: process.env.NODE_ENV === 'development',
+                        macros: { "\\ce": "\\text{#1}" }, // 支持化学方程式
+                        strict: "ignore" // 忽略一些严格模式错误
+                    });
+                } catch (e) {
+                    return `<div class="katex-error" title="${escapeHtml(e.message)}">${escapeHtml(math)}</div>`;
+                }
+            });
+
+
+            return `<p>${text}</p>`;
+        };
+
+        marked.setOptions({
+            renderer,
+            highlight: function (code, lang) {
+                const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+                return hljs.highlight(code, { language }).value;
+            },
+            langPrefix: 'hljs language-',
+            breaks: true,
+            gfm: true
+        });
+
+        function updateMarkdownPreview() {
+            const content = document.getElementById('markdown-editor').value;
+            const preview = document.getElementById('markdown-preview');
+            preview.innerHTML = marked.parse(content);
+            renderMathInElement(preview, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ],
+                throwOnError: false
+            });
+
+            // 重新高亮代码块
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        }
+
+        // 自动保存功能
+        let saveTimer;
+        const AUTO_SAVE_INTERVAL = 5000; // 5秒自动保存
+
+        function autoSaveMarkdown() {
+            clearTimeout(saveTimer);
+            saveTimer = setTimeout(() => {
+                const content = document.getElementById('markdown-editor').value;
+                localStorage.setItem('autoSavedMarkdown', content);
+                showNotification('内容已自动保存', 0);
+            }, AUTO_SAVE_INTERVAL);
+        }
+
+        // 剪贴板功能
+        function loadClipboardItems() {
+            const items = localStorage.getItem('clipboardItems');
+            return items ? JSON.parse(items) : [
+                {
+                    id: 1,
+                    title: '示例剪贴板',
+                    content: '这是一个示例内容\n\n支持 **Markdown** 和 Katex 公式\n\n 行内公式：$E=mc^2$\n\n块公式（暂不支持）：\n$$\\int_a^b f(x)dx = F(b) - F(a)\n$$\n\n代码示例：\n```javascript\nfunction hello() {\n    console.log("Hello, world!");\n}\n```',
+                    date: new Date().toLocaleDateString()
+                }
+            ];
+        }
+
+        function saveClipboardItems(items) {
+            localStorage.setItem('clipboardItems', JSON.stringify(items));
+        }
+
+        function renderClipboardItems() {
+            const items = loadClipboardItems();
+            const container = document.getElementById('clipboard-items');
+            container.innerHTML = items.map(item => `
+                <div class="clipboard-item" data-id="${item.id}">
+                    <div class="clipboard-actions">
+                        <button title="删除" onclick="deleteClipboardItem(${item.id})"><i class="fas fa-trash"></i></button>
+                        <button title="编辑" onclick="editClipboardItem(${item.id})"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <h4>${item.title}</h4>
+                    <div class="clipboard-content">${marked.parse(item.content)}</div>
+                    <small>${item.date}</small>
+                </div>
+            `).join('');
+
+            renderMathInElement(container, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false }
+                ],
+                throwOnError: false
+            });
+
+            // 重新高亮代码块
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        }
+
+        function deleteClipboardItem(id) {
+            const items = loadClipboardItems().filter(item => item.id !== id);
+            saveClipboardItems(items);
+            renderClipboardItems();
+            showNotification('剪贴板已删除', 1);
+        }
+
+        function editClipboardItem(id) {
+            const items = loadClipboardItems();
+            const item = items.find(item => item.id === id);
+            if (!item) return;
+
+            const form = document.getElementById('clipboard-form');
+            form.querySelector('input[name="title"]').value = item.title;
+            form.querySelector('textarea[name="content"]').value = item.content;
+
+            // 删除原项目
+            deleteClipboardItem(id);
+
+            // 滚动到表单
+            form.scrollIntoView({ behavior: 'smooth' });
+            showNotification('正在编辑剪贴板', 1);
+        }
+
+        document.getElementById('clipboard-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const title = this.querySelector('input[name="title"]').value;
+            const content = this.querySelector('textarea[name="content"]').value;
+
+            if (!title || !content) {
+                showNotification('标题和内容不能为空', 1);
+                return;
+            }
+
+            const items = loadClipboardItems();
+            items.unshift({
+                id: Date.now(),
+                title: title,
+                content: content,
+                date: new Date().toLocaleDateString()
+            });
+
+            saveClipboardItems(items);
+            renderClipboardItems();
+
+            // 显示通知
+            showNotification(`已创建剪贴板: ${title}`, 1);
+
+            // 清空表单
+            this.reset();
+        });
+
+        // 算法模板库
+        const algorithmTemplates = [
+            {
+                id: 1,
+                title: '快速排序',
+                category: '排序算法',
+                code: 'function quickSort(arr) {\n  if (arr.length <= 1) return arr;\n  const pivot = arr[0];\n  const left = [];\n  const right = [];\n  for (let i = 1; i < arr.length; i++) {\n    if (arr[i] < pivot) left.push(arr[i]);\n    else right.push(arr[i]);\n  }\n  return [...quickSort(left), pivot, ...quickSort(right)];\n}',
+                description: '快速排序是一种分治算法，平均时间复杂度为 $O(n log n)$'
+            },
+            {
+                id: 2,
+                title: '二分查找',
+                category: '查找算法',
+                code: 'function binarySearch(arr, target) {\n  let left = 0;\n  let right = arr.length - 1;\n  while (left <= right) {\n    const mid = Math.floor((left + right) / 2);\n    if (arr[mid] === target) return mid;\n    if (arr[mid] < target) left = mid + 1;\n    else right = mid - 1;\n  }\n  return -1;\n}',
+                description: '二分查找适用于已排序数组，时间复杂度为 $O(log n)$'
+            },
+            {
+                id: 3,
+                title: '二叉树遍历',
+                category: '树结构',
+                code: 'class TreeNode {\n  constructor(val) {\n    this.val = val;\n    this.left = null;\n    this.right = null;\n  }\n}\n\n// 前序遍历\nfunction preorderTraversal(root) {\n  if (!root) return [];\n  return [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)];\n}',
+                description: '二叉树的前序遍历（根-左-右）'
+            },
+            {
+                id: 4,
+                title: '动态规划-斐波那契',
+                category: '动态规划',
+                code: 'function fibonacci(n) {\n  if (n <= 1) return n;\n  \n  let dp = [0, 1];\n  for (let i = 2; i <= n; i++) {\n    dp[i] = dp[i - 1] + dp[i - 2];\n  }\n  \n  return dp[n];\n}',
+                description: '使用动态规划优化斐波那契数列计算'
+            }
+        ];
+
+        function renderAlgorithmTemplates(search = '') {
+            const filtered = algorithmTemplates.filter(algo =>
+                algo.title.toLowerCase().includes(search.toLowerCase()) ||
+                algo.category.toLowerCase().includes(search.toLowerCase()) ||
+                algo.description.toLowerCase().includes(search.toLowerCase())
+            );
+
+            document.getElementById('algorithm-list').innerHTML = filtered.map(algo => `
+                <div class="algorithm-card">
+                    <h3>${algo.title}</h3>
+                    <small>${algo.category}</small>
+                    <p style="margin: 0.5rem 0; color: var(--text-color); opacity: 0.8;">${algo.description}</p>
+                    <pre><code class="language-javascript">${algo.code}</code></pre>
+                </div>
+            `).join('');
+
+            // 高亮代码
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        }
+
+        document.getElementById('algorithm-search').addEventListener('input', (e) => {
+            renderAlgorithmTemplates(e.target.value);
+        });
+
+        // 更新日志
+        function renderChangelog() {
+            const changelog = [
+                {
+                    version: '1.0.1',
+                    date: '2025-05-1',
+                    changes: [
+                        '新增灯箱效果，支持算法模板全屏查看',
+                        '添加自动保存功能',
+                        '优化算法模板库的高亮显示',
+                        '美化整体界面和交互效果'
+                    ]
+                },
+                {
+                    version: '1.0.0',
+                    date: '2025-04-30',
+                    changes: [
+                        '初始版本发布',
+                        '包含Markdown编辑器、剪贴板、算法模板库和更新日志功能',
+                        '支持白天、黄昏和夜晚三种主题',
+                        '实现响应式设计，适配各种设备'
+                    ]
+                }
+            ];
+
+            document.getElementById('changelog-content').innerHTML = changelog.map(item => `
+                <div class="changelog-item">
+                    <span class="changelog-version">v${item.version}</span>
+                    <span class="changelog-date">${item.date}</span>
+                    <ul class="changelog-changes">
+                        ${item.changes.map(change => `<li>${change}</li>`).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        // 消息通知系统
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            const messageEl = notification.querySelector('.notification-message');
+            const iconEl = notification.querySelector('.notification-icon');
+
+            messageEl.textContent = message;
+
+            // 根据类型设置图标和颜色
+            if (type === 1) { // 信息通知
+                notification.style.backgroundColor = 'var(--primary-color)';
+                iconEl.innerHTML = '<i class="fas fa-info-circle"></i>';
+            } else { // 成功通知
+                notification.style.backgroundColor = 'var(--secondary-color)';
+                iconEl.innerHTML = '<i class="fas fa-check-circle"></i>';
+            }
+
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+                if (type === 1) {
+                    addNotificationToHistory(message);
+                }
+            }, 3000);
+        }
+
+        function addNotificationToHistory(message) {
+            const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
+            notifications.unshift({
+                id: Date.now(),
+                message: message,
+                time: new Date().toLocaleTimeString()
+            });
+            localStorage.setItem('notifications', JSON.stringify(notifications));
+            renderNotifications();
+        }
+
+        function renderNotifications() {
+            const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
+            document.getElementById('notification-history').innerHTML = notifications.map(n => `
+                <div class="notification-history-item">
+                    <small>${n.time}</small>
+                    <div>${n.message}</div>
+                </div>
+            `).join('');
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 加载自动保存的内容
+            const savedContent = localStorage.getItem('autoSavedMarkdown');
+            if (savedContent) {
+                document.getElementById('markdown-editor').value = savedContent;
+            }
+
+            updateMarkdownPreview();
+            renderClipboardItems();
+            renderAlgorithmTemplates();
+            renderChangelog();
+            renderNotifications();
+
+            // 设置自动保存监听
+            document.getElementById('markdown-editor').addEventListener('input', () => {
+                updateMarkdownPreview();
+                autoSaveMarkdown();
+            });
+
+            // 初始化主题
+            updateTimeAndTheme();
+            setInterval(updateTimeAndTheme, 60000);
+
+            // 初始化代码高亮主题
+            updateCodeHighlightTheme();
+
+            // // 初始化灯箱
+            // lightbox.option({
+            //     'resizeDuration': 200,
+            //     'wrapAround': true,
+            //     'disableScrolling': true,
+            //     'albumLabel': '图片 %1 / %2'
+            // });
+        });
+    </script>
+
+    <script>
+        // 天气功能实现
+        document.getElementById('weather').addEventListener('click', function () {
+            fetchWeather();
+        });
+
+        function fetchWeather() {
+            const weatherContent = document.getElementById('weatherContent');
+
+            // 首先获取IP信息
+            fetch('https://api.vvhan.com/api/ipInfo')
+                .then(response => response.json())
+                .then(ipData => {
+                    if (ipData.success && ipData.ip) {
+                        // 使用IP获取天气信息
+                        return fetch(`https://api.vvhan.com/api/weather?ip=${ipData.ip}&type=week`);
+                    } else {
+                        throw new Error('无法获取IP信息');
+                    }
+                })
+                .then(response => response.json())
+                .then(weatherData => {
+                    if (weatherData.success) {
+                        renderWeather(weatherData);
+                    } else {
+                        throw new Error('无法获取天气信息');
+                    }
+                })
+                .catch(error => {
+                    console.error('获取天气失败:', error);
+                    weatherContent.innerHTML = `
+					<div style="text-align: center; padding: 20px;">
+						<i class="fas fa-exclamation-triangle" style="font-size: 2em; color: #e74c3c;"></i>
+						<p>获取天气信息失败，请稍后再试</p>
+						<button onclick="fetchWeather()" style="padding: 8px 16px; background: var(--theme-color); color: white; border: none; border-radius: 4px; cursor: pointer;">重试</button>
+					</div>
+				`;
+                });
+        }
+
+        function renderWeather(data) {
+            const weatherContent = document.getElementById('weatherContent');
+
+            // 当前天气
+            const currentDay = data.data[0];
+            const airQuality = data.air;
+
+            // 获取AQI等级
+            function getAqiLevel(aqi) {
+                if (aqi <= 50) return { level: '优', class: 'aqi-good' };
+                if (aqi <= 100) return { level: '良', class: 'aqi-moderate' };
+                if (aqi <= 150) return { level: '轻度污染', class: 'aqi-unhealthy' };
+                if (aqi <= 200) return { level: '中度污染', class: 'aqi-unhealthy' };
+                if (aqi <= 300) return { level: '重度污染', class: 'aqi-unhealthy' };
+                return { level: '严重污染', class: 'aqi-unhealthy' };
+            }
+
+            const aqiInfo = getAqiLevel(airQuality.aqi);
+
+            // 构建天气HTML
+            let html = `
+			<div class="weather-header">
+				<h4>${data.city}</h4>
+				<div>${currentDay.date} ${currentDay.week}</div>
+			</div>
+			
+			<div class="weather-current">
+				<div class="weather-temp">${currentDay.high.replace('°C', '')}°</div>
+				<div class="weather-desc">${currentDay.type}</div>
+				<div style="font-size: 0.9em; color: var(--text-color);">${currentDay.fengxiang} ${currentDay.fengli}</div>
+				
+				<div class="weather-details">
+					<div class="weather-detail">
+						<span style="font-size: 0.9em;">最低温度</span>
+						<span>${currentDay.low}</span>
+					</div>
+					<div class="weather-detail">
+						<span style="font-size: 0.9em;">夜间天气</span>
+						<span>${currentDay.night.type}</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="weather-air">
+				<div class="weather-air-title">空气质量</div>
+				<div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+					<span>AQI指数</span>
+					<span class="weather-air-value ${aqiInfo.class}">${airQuality.aqi} (${aqiInfo.level})</span>
+				</div>
+				<div class="weather-air-details">
+					<div class="weather-air-item">
+						<span>PM2.5</span>
+						<span class="weather-air-value">${airQuality['pm2.5']} μg/m³</span>
+					</div>
+					<div class="weather-air-item">
+						<span>PM10</span>
+						<span class="weather-air-value">${airQuality.pm10} μg/m³</span>
+					</div>
+					<div class="weather-air-item">
+						<span>二氧化硫</span>
+						<span class="weather-air-value">${airQuality.so2} μg/m³</span>
+					</div>
+					<div class="weather-air-item">
+						<span>二氧化氮</span>
+						<span class="weather-air-value">${airQuality.no2} μg/m³</span>
+					</div>
+					<div class="weather-air-item">
+						<span>臭氧</span>
+						<span class="weather-air-value">${airQuality.o3} μg/m³</span>
+					</div>
+					<div class="weather-air-item">
+						<span>一氧化碳</span>
+						<span class="weather-air-value">${airQuality.co} mg/m³</span>
+					</div>
+				</div>
+			</div>
+			
+			<h4 style="margin-top: 20px;">7天预报</h4>
+			<div class="weather-forecast">
+		`;
+
+            // 添加天气预报
+            data.data.slice(0, 7).forEach(day => {
+                html += `
+				<div class="weather-day">
+					<div class="weather-day-title">${day.week}</div>
+					<div>${day.type}</div>
+					<div class="weather-day-temp">
+						<span class="weather-high">${day.high}</span>
+						<span class="weather-low">${day.low}</span>
+					</div>
+				</div>
+			`;
+            });
+
+            html += `
+			</div>
+			<div style="margin-top: 15px; font-size: 0.9em; color: var(--text-color); text-align: center;">
+				${data.tip || '温馨提示：天气变化，注意增减衣物'}
+			</div>
+			<div style="margin-top: 15px; text-align: center;">
+				<button onclick="fetchWeather()" style="padding: 8px 16px; background: var(--theme-color); color: white; border: none; border-radius: 4px; cursor: pointer;">刷新天气</button>
+			</div>
+		`;
+
+            weatherContent.innerHTML = html;
+        }
+
+        // 诗词API调用
+        function fetchPoem() {
+            fetch('https://api.vvhan.com/api/ian/shici')
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById('poemContainer').textContent = "每日诗词：" + text;
+                })
+                .catch(error => {
+                    console.error('获取诗词失败:', error);
+                    document.getElementById('poemContainer').textContent = "天生我材必有用，千金散尽还复来。";
+                });
+        }
+
+        // 每分钟更新诗词
+        fetchPoem();
+        setInterval(fetchPoem, 60000);
+
+        document.getElementById('horoscope').addEventListener('click', function () {
+            document.getElementById('horoscopeInput').focus();
+        });
+
+        // 星座运势查询功能
+        const horoscopeInput = document.getElementById('horoscopeInput');
+        const horoscopeSubmit = document.getElementById('horoscopeSubmit');
+        const horoscopeResult = document.getElementById('horoscopeResult');
+
+        function fetchHoroscope(sign) {
+            fetch(`https://api.vvhan.com/api/horoscope?type=${sign}&time=today`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const result = data.data;
+                        horoscopeResult.innerHTML = `
+                    <div class="horoscope-item">
+                        <strong>星座:</strong> ${result.title}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>时间:</strong> ${result.time}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>宜:</strong> ${result.todo.yi}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>忌:</strong> ${result.todo.ji}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>幸运色:</strong> ${result.luckycolor}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>幸运数字:</strong> ${result.luckynumber}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>综合运势:</strong> ${result.fortune.all}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>爱情运势:</strong> ${result.fortune.love}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>工作运势:</strong> ${result.fortune.work}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>金钱运势:</strong> ${result.fortune.money}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>健康运势:</strong> ${result.fortune.health}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>综合运势:</strong> ${result.index.all}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>爱情运势:</strong> ${result.index.love}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>工作运势:</strong> ${result.index.work}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>金钱运势:</strong> ${result.index.money}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>健康运势:</strong> ${result.index.health}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>速配星座:</strong> ${result.luckyconstellation}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>今日提醒:</strong> ${result.shortcomment}<br><br>${result.fortunetext.all}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>今日提醒-爱情:</strong> ${result.fortunetext.love}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>今日提醒-工作:</strong> ${result.fortunetext.work}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>今日提醒-财运:</strong> ${result.fortunetext.money}
+                    </div>
+                    <div class="horoscope-item">
+                        <strong>今日提醒-健康:</strong> ${result.fortunetext.health}
+                    </div>
+                `;
+                    } else {
+                        horoscopeResult.innerHTML = `<div class="horoscope-item">获取运势失败，请检查星座名称是否正确</div>`;
+                    }
+                })
+                .catch(error => {
+                    console.error('获取星座运势失败:', error);
+                    horoscopeResult.innerHTML = `<div class="horoscope-item">获取运势失败，请稍后再试</div>`;
+                });
+        }
+
+        horoscopeSubmit.addEventListener('click', () => {
+            const sign = horoscopeInput.value.trim();
+            if (sign) {
+                fetchHoroscope(sign);
+            }
+        });
+
+        horoscopeInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const sign = horoscopeInput.value.trim();
+                if (sign) {
+                    fetchHoroscope(sign);
+                }
+            }
+        });
+
+        document.getElementById('bookQuote').addEventListener('click', function () {
+            // 获取文学句子并处理
+            fetch('https://api.vvhan.com/api/ian/wenxue?type=json')
+                .then(response => response.json())
+                .then(data => {
+                    // // 每9个字符加一个换行符
+                    let processedText = '';
+                    const content = data.data.content || '';
+                    for (let i = 0; i < content.length; i++) {
+                        processedText += content[i];
+                        if ((i + 1) % 9 === 0) {
+                            processedText += '\n';
+                        }
+                    }
+
+                    // 编码处理后的文本和作者用于URL
+                    const encodedText = encodeURIComponent(processedText);
+                    const encodedAuthor = encodeURIComponent('——' + data.data.form || '——未知');
+
+                    // 创建图片元素
+                    const img = document.createElement('img');
+                    img.src = `https://api.vvhan.com/api/artText?text=${encodedText} &auther=${encodedAuthor}&color=000000&bgcolor=ffffff`;
+                    img.style.maxWidth = '100%';
+                    img.style.display = 'block';
+                    img.style.margin = '0 auto';
+
+                    // 清空并添加图片到书摘框
+                    const bookQuoteContent = document.getElementById('bookQuoteContent');
+                    bookQuoteContent.innerHTML = '';
+                    bookQuoteContent.appendChild(img);
+                })
+                .catch(error => {
+                    console.error('获取书摘失败:', error);
+                    document.getElementById('bookQuoteContent').innerHTML =
+                        '<p>获取书摘失败，请稍后再试。</p>';
+                });
+        });
+    </script>
+</body>
+
+</html>
